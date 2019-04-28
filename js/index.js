@@ -25,7 +25,9 @@ function showRepositories() {
   const repoList = `<ul>${repos.map(r =>'<li>' + r.name +
         ' - <a href="#" data-repo="' +
         r.name + '" onclick="getCommits(this)">Get Commits</a></li>').join('')}</ul>`;
-        
+  
+  //data-repo value (el.dataset.repo) 
+  
   document.getElementById('repositories').innerHTML = repoList;
 }
 
@@ -34,6 +36,7 @@ function showRepositories() {
 function getCommits(el) {
   //el is the element in repos object passed as THIS by onclick as it is mapped into array of a links.
   const name = el.dataset.repo;
+  //Here we grab that data-repo value through the dataset property
   const req = new XMLHttpRequest();
   
   req.addEventListener('load', showCommits);
